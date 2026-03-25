@@ -35,19 +35,20 @@ export default function Navigation() {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'bg-paper/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
+        scrolled ? 'bg-white/95 backdrop-blur-sm shadow-md' : 'bg-white/80 backdrop-blur-sm'
       }`}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
+      transition={{ duration: 0.6 }}
     >
-      <div className="sumie-space flex items-center justify-between py-4">
+      {/* Узкий header */}
+      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         {/* Логотип */}
         <motion.a
           href="#home"
-          className="text-2xl font-serif font-medium sumie-brush"
-          whileHover={{ opacity: 0.7 }}
+          className="text-xl font-serif font-medium text-black hover:opacity-70 transition-opacity"
+          whileHover={{ scale: 1.05 }}
           onClick={(e) => {
             e.preventDefault();
             scrollToSection('#home');
@@ -56,34 +57,34 @@ export default function Navigation() {
           墨
         </motion.a>
 
-        {/* Десктоп меню */}
-        <div className="hidden md:flex items-center gap-8">
+        {/* Десктоп меню - компактное */}
+        <div className="hidden md:flex items-center gap-6">
           {navItems.map((item, index) => (
             <motion.a
               key={item.id}
               href={item.href}
-              className="text-sm font-sans font-light tracking-wide sumie-brush"
+              className="text-sm font-light text-gray-700 hover:text-black transition-colors relative group"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              whileHover={{ opacity: 0.6 }}
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection(item.href);
               }}
             >
               {item.label}
+              <span className="absolute -bottom-1 left-0 w-0 h-px bg-black transition-all duration-300 group-hover:w-full" />
             </motion.a>
           ))}
         </div>
 
         {/* Мобильное меню кнопка */}
         <button
-          className="md:hidden p-2"
+          className="md:hidden p-2 text-gray-700 hover:text-black"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {isOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
@@ -91,7 +92,7 @@ export default function Navigation() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="md:hidden bg-paper border-t border-stone"
+            className="md:hidden bg-white border-t border-gray-200 shadow-lg"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -102,7 +103,7 @@ export default function Navigation() {
                 <a
                   key={item.id}
                   href={item.href}
-                  className="px-6 py-3 text-sm font-light hover:bg-mist transition-colors"
+                  className="px-6 py-3 text-sm font-light text-gray-700 hover:bg-gray-100 transition-colors"
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToSection(item.href);
