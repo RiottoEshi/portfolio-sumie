@@ -3,82 +3,104 @@
 
 import { motion } from 'framer-motion';
 import SumieCircle from '../ui/SumieCircle';
-import SumieBranch from '../ui/SumieBranch';
+import Sakura from './Sakura';
+import SakuraTree from './SakuraTree';
 
 export default function Hero() {
   return (
     <section 
       id="home" 
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-paper"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-gray-50 to-gray-100"
     >
-      {/* Декоративные элементы */}
-      <div className="absolute top-20 left-10 opacity-20">
-        <SumieCircle size="lg" variant="double" />
-      </div>
-      
-      <div className="absolute bottom-20 right-10 opacity-30">
-        <SumieBranch direction="diagonal" length="long" />
-      </div>
+      {/* Сакура */}
+      <Sakura />
 
-      <div className="absolute top-1/3 right-1/4 w-64 h-64 border border-stone rounded-full opacity-10" />
-      <div className="absolute bottom-1/3 left-1/4 w-96 h-96 border border-stone rounded-full opacity-5" />
+      {/* Дерево сакуры */}
+      <SakuraTree position="right" opacity={0.15} />
 
       {/* Основной контент */}
-      <div className="sumie-space text-center z-10">
+      <div className="sumie-space text-center z-10 relative max-w-4xl mx-auto px-8">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
+          transition={{ duration: 1 }}
         >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light mb-6 sumie-ink">
-            Разработчик
-          </h1>
+          <motion.h1 
+            className="text-6xl md:text-8xl font-serif font-light mb-6 text-black"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, delay: 0.3 }}
+          >
+            墨
+          </motion.h1>
           
           <motion.div
-            className="w-24 h-px bg-ink mx-auto mb-8 opacity-30"
+            className="w-24 h-px bg-black mx-auto mb-8 opacity-30"
             initial={{ width: 0 }}
             animate={{ width: 96 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
+            transition={{ delay: 0.6, duration: 1 }}
           />
 
-          <p className="text-xl md:text-2xl font-light text-shadow mb-4">
-            Создаю цифровые произведения искусства
-          </p>
-          
           <motion.p 
-            className="text-base md:text-lg font-light text-stone mb-12"
+            className="text-3xl md:text-5xl font-light text-black mb-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
+            transition={{ delay: 0.8 }}
+          >
+            Rexali
+          </motion.p>
+          
+          <motion.p 
+            className="text-xl md:text-2xl font-light text-gray-700 mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1 }}
+          >
+            Создаю цифровые произведения искусства
+          </motion.p>
+
+          <motion.p 
+            className="text-base md:text-lg font-light text-gray-600 mb-16"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2 }}
           >
             Full-stack разработка • Минимализм • Эстетика
           </motion.p>
 
-          {/* Кнопки действий */}
+          {/* Кнопки */}
           <motion.div 
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-            initial={{ opacity: 0, y: 20 }}
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
+            transition={{ delay: 1.4 }}
           >
             <motion.a
               href="#projects"
-              className="px-8 py-3 bg-ink text-paper font-light tracking-wide hover:bg-shadow transition-colors duration-300"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              className="group px-10 py-4 bg-black text-white font-light tracking-wide hover:bg-gray-800 transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={(e) => {
                 e.preventDefault();
                 document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              Смотреть работы
+              <span className="flex items-center gap-2">
+                Смотреть работы
+                <motion.span
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  →
+                </motion.span>
+              </span>
             </motion.a>
             
             <motion.a
               href="#contact"
-              className="px-8 py-3 border border-ink font-light tracking-wide hover:bg-ink hover:text-paper transition-all duration-300"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              className="px-10 py-4 border-2 border-black text-black font-light tracking-wide hover:bg-black hover:text-white transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={(e) => {
                 e.preventDefault();
                 document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -87,15 +109,6 @@ export default function Hero() {
               Связаться
             </motion.a>
           </motion.div>
-        </motion.div>
-
-        {/* Индикатор прокрутки */}
-        <motion.div
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <div className="w-px h-16 bg-gradient-to-b from-ink to-transparent opacity-30" />
         </motion.div>
       </div>
     </section>
