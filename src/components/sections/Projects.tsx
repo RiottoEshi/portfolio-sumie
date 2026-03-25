@@ -171,7 +171,7 @@ export default function Projects() {
           transition={{ delay: 0.4 }}
         >
           <a
-            href="https://github.com/ваш-логин"
+            href="https://github.com/RiottoEshi"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-10 py-5 border-2 border-black text-black font-light hover:bg-black hover:text-white transition-all duration-300 rounded-lg"

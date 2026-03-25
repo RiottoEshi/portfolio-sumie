@@ -7,9 +7,9 @@ import Sakura from './Sakura';
 import { useState } from 'react';
 
 const socialLinks = [
-  { name: 'Email', icon: Mail, url: 'mailto:your.email@example.com', color: 'hover:bg-red-50 hover:border-red-200' },
-  { name: 'Telegram', icon: Send, url: 'https://t.me/yourusername', color: 'hover:bg-blue-50 hover:border-blue-200' },
-  { name: 'GitHub', icon: GitBranch, url: 'https://github.com/yourusername', color: 'hover:bg-gray-50 hover:border-gray-300' },
+  { name: 'Email', icon: Mail, url: 'mailto:uarik789qaqa@gmail.com', color: 'hover:bg-red-50 hover:border-red-200' },
+  { name: 'Telegram', icon: Send, url: 'https://t.Daemaem', color: 'hover:bg-blue-50 hover:border-blue-200' },
+  { name: 'GitHub', icon: GitBranch, url: 'https://github.com/RiottoEshi', color: 'hover:bg-gray-50 hover:border-gray-300' },
   { name: 'LinkedIn', icon: LinkIcon, url: 'https://linkedin.com/in/yourusername', color: 'hover:bg-indigo-50 hover:border-indigo-200' },
 ];
 

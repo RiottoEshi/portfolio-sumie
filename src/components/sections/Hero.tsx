@@ -66,7 +66,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.9 }}
           >
-            Разработчик
+            rEXAli
           </motion.p>
           
           <motion.p 

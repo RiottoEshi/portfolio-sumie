@@ -42,50 +42,70 @@ export default function Navigation() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
-      {/* Узкий header */}
-      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-        {/* Логотип */}
-        <motion.a
-          href="#home"
-          className="text-xl font-serif font-medium text-black hover:opacity-70 transition-opacity"
-          whileHover={{ scale: 1.05 }}
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToSection('#home');
-          }}
-        >
-          墨
-        </motion.a>
-
-        {/* Десктоп меню - компактное */}
-        <div className="hidden md:flex items-center gap-6">
-          {navItems.map((item, index) => (
+      {/* Контейнер */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Flex центрированный header */}
+        <div className="flex items-center justify-between h-14">
+          
+          {/* Логотип - по центру на мобильных, слева на десктопе */}
+          <motion.div
+            className="flex-shrink-0"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             <motion.a
-              key={item.id}
-              href={item.href}
-              className="text-sm font-light text-gray-700 hover:text-black transition-colors relative group"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              href="#home"
+              className="text-xl font-serif font-medium text-black hover:opacity-70 transition-opacity flex items-center gap-2"
+              whileHover={{ scale: 1.05 }}
               onClick={(e) => {
                 e.preventDefault();
-                scrollToSection(item.href);
+                scrollToSection('#home');
               }}
             >
-              {item.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-px bg-black transition-all duration-300 group-hover:w-full" />
+              <span className="text-2xl">墨</span>
+              <span className="hidden sm:inline text-sm font-light text-gray-500">| Портфолио</span>
             </motion.a>
-          ))}
-        </div>
+          </motion.div>
 
-        {/* Мобильное меню кнопка */}
-        <button
-          className="md:hidden p-2 text-gray-700 hover:text-black"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
+          {/* Десктоп меню - центрированное */}
+          <div className="hidden md:flex items-center justify-center flex-1 mx-8">
+            <div className="flex items-center gap-8">
+              {navItems.map((item, index) => (
+                <motion.a
+                  key={item.id}
+                  href={item.href}
+                  className="text-sm font-light text-gray-700 hover:text-black transition-colors relative group py-2"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(item.href);
+                  }}
+                >
+                  {item.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-black transition-all duration-300 group-hover:w-full" />
+                </motion.a>
+              ))}
+            </div>
+          </div>
+
+          {/* Правая часть - можно добавить кнопки */}
+          <div className="hidden md:flex items-center gap-4 flex-shrink-0">
+            {/* Пустое место для баланса или можно добавить соцсети */}
+          </div>
+
+          {/* Мобильное меню кнопка */}
+          <motion.button
+            className="md:hidden p-2 text-gray-700 hover:text-black"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+            whileTap={{ scale: 0.95 }}
+          >
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
+          </motion.button>
+        </div>
       </div>
 
       {/* Мобильное меню */}
@@ -99,18 +119,21 @@ export default function Navigation() {
             transition={{ duration: 0.3 }}
           >
             <div className="flex flex-col py-4">
-              {navItems.map((item) => (
-                <a
+              {navItems.map((item, index) => (
+                <motion.a
                   key={item.id}
                   href={item.href}
                   className="px-6 py-3 text-sm font-light text-gray-700 hover:bg-gray-100 transition-colors"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToSection(item.href);
                   }}
                 >
                   {item.label}
-                </a>
+                </motion.a>
               ))}
             </div>
           </motion.div>
