@@ -42,10 +42,10 @@ export default function Contact() {
       {/* Сакура */}
       <Sakura />
 
-      <div className="sumie-space relative z-10 max-w-6xl mx-auto">
+      <div className="sumie-space relative z-10 w-full">
         {/* Заголовок */}
         <motion.div
-          className="text-center mb-20"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -60,13 +60,14 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {/* Контакты */}
           <motion.div
             initial={{ opacity: 0, x: -80 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="content-box"
           >
             <h3 className="text-3xl font-serif font-light mb-8 text-black">Давайте свяжемся</h3>
             
@@ -77,7 +78,7 @@ export default function Contact() {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex items-center gap-5 p-6 border-2 border-gray-200 rounded-lg bg-white shadow-sm hover:shadow-lg transition-all duration-300 ${link.color}`}
+                  className={`flex items-center gap-5 p-6 border-2 border-gray-200 rounded-lg bg-white shadow-sm transition-all duration-300 ${link.color}`}
                   initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -109,10 +110,11 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="content-box"
           >
             <h3 className="text-3xl font-serif font-light mb-8 text-black">Напишите мне</h3>
             
-            <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-lg border-2 border-gray-200 shadow-lg">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-light mb-2 text-gray-700">
                   Ваше имя

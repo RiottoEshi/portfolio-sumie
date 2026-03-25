@@ -46,7 +46,7 @@ const services = [
 export default function Services() {
   return (
     <section className="py-20 bg-gray-50 relative overflow-hidden">
-      <div className="sumie-space max-w-7xl mx-auto">
+      <div className="sumie-space w-full">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 50 }}
@@ -60,13 +60,13 @@ export default function Services() {
           <div className="w-24 h-px bg-black mx-auto opacity-30" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
               <motion.div
                 key={service.title}
-                className="bg-white p-8 rounded-lg border-2 border-gray-200 hover:border-black hover:shadow-xl transition-all duration-300"
+                className="content-box"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

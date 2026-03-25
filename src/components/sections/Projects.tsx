@@ -66,10 +66,10 @@ export default function Projects() {
         <SumieCircle size="xl" variant="outline" />
       </div>
 
-      <div className="sumie-space relative z-10 max-w-7xl mx-auto">
+      <div className="sumie-space relative z-10 w-full">
         {/* Заголовок */}
         <motion.div
-          className="text-center mb-20"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -85,13 +85,13 @@ export default function Projects() {
         </motion.div>
 
         {/* Сетка проектов */}
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {projects.map((project, index) => {
             const Icon = project.icon;
             return (
               <motion.article
                 key={project.id}
-                className="group bg-gray-50 border-2 border-gray-200 p-8 rounded-lg hover:border-black hover:shadow-xl transition-all duration-500"
+                className="content-box"
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
